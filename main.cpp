@@ -23,11 +23,13 @@ void getTheLine(const string& line){
     uint32_t num2;
     
     //if the line doesn't read out in the format of OPERATION HEX HEX, return an error
-    if (!(iss >> operation >> hex >> num1 >> hex >> num2)) {
+    if (!(iss >> operation >> hex >> num1)) {
         cout << "Error processing line: " << line << endl;
         return;
     }
-
+    if(operation == "NOT" || operation == "NOTS"){
+        notOp(num1,operation);
+    } else if (iss >> hex >> num2 ){
     if (operation == "ADD" || operation == "ADDS") {
         //Adds the two hexidecimal numbers
         addition(num1, num2, operation);
@@ -48,6 +50,7 @@ void getTheLine(const string& line){
     } else if (operation == "LSL" || operation == "LSLS" ){
         lslOp(num1,num2,operation);
     }
+    }
 }
 
 int main(){
@@ -64,6 +67,7 @@ int main(){
     return 0;
 }
 
+//Addition
 void addition(uint32_t num1, uint32_t num2, string operation){
     uint32_t result = num1 + num2;
         cout << operation << " 0x" << uppercase << hex << num1
@@ -72,7 +76,7 @@ void addition(uint32_t num1, uint32_t num2, string operation){
     cout << endl;
 }
 
-
+//Subtraction
 void subtraction(uint32_t num1, uint32_t num2, string operation){
     uint32_t result = num1 - num2;
         cout << operation << " 0x" << uppercase << hex << num1
@@ -80,7 +84,7 @@ void subtraction(uint32_t num1, uint32_t num2, string operation){
              << "0x" << uppercase << hex << result << endl;
     cout << endl;
 }
-
+//Bitwise and
 void andOp(uint32_t num1, uint32_t num2, string operation){
     uint32_t result = num1 & num2;
         cout << operation << " 0x" << uppercase << hex << num1
@@ -88,7 +92,7 @@ void andOp(uint32_t num1, uint32_t num2, string operation){
              << "0x" << uppercase << hex << result << endl;
     cout << endl;
 }
-
+//Bitwise Or
 void orOp(uint32_t num1, uint32_t num2, string operation){
     uint32_t result = num1 | num2;
         cout << operation << " 0x" << uppercase << hex << num1
@@ -96,7 +100,7 @@ void orOp(uint32_t num1, uint32_t num2, string operation){
              << "0x" << uppercase << hex << result << endl;
     cout << endl;
 }
-
+//Bitwise exclusive or
 void xorOp(uint32_t num1, uint32_t num2, string operation){
     uint32_t result = num1 ^ num2;
         cout << operation << " 0x" << uppercase << hex << num1
@@ -104,22 +108,24 @@ void xorOp(uint32_t num1, uint32_t num2, string operation){
              << "0x" << uppercase << hex << result << endl;
     cout << endl;
 }
-
+//Bitwise not (inverts)
 void notOp(uint32_t num1, string operation){
     uint32_t result = ~num1;
         cout << operation << " 0x" << uppercase << hex << num1 << ": "
              << "0x" << uppercase << hex << result << endl;
     cout << endl;
 }
-
+//Arithmetic right shift
 void asrOp(uint32_t num1, uint32_t num2, string operation){
-    uint32_t result = num1 >> num2;
+    int32_t signedNum1 = num1;
+     int32_t result = num1 >> num2;
+
         cout << operation << " 0x" << uppercase << hex << num1
              << " 0x" << uppercase << hex << num2 << ": "
              << "0x" << uppercase << hex << result << endl;
     cout << endl;
 }
-
+//Logical right shift
 void lsrOp(uint32_t num1, uint32_t num2, string operation){
     uint32_t result = num1 >> num2;
         cout << operation << " 0x" << uppercase << hex << num1
@@ -127,7 +133,7 @@ void lsrOp(uint32_t num1, uint32_t num2, string operation){
              << "0x" << uppercase << hex << result << endl;
     cout << endl;
 }
-
+//Logical left shift
 void lslOp(uint32_t num1, uint32_t num2, string operation){
     uint32_t result = num1 << num2;
         cout << operation << " 0x" << uppercase << hex << num1
