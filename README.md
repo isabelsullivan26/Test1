@@ -16,4 +16,4 @@ XOR: Bitwise xor on two registers then updates flags
 LSR: Logical right shift of bits
 LSL: Logical left shift of bits 
 
-TO EXECUTE: Call ./instructions in the terminal.
+TO EXECUTE: Call make, then ./instructions in the terminal.
