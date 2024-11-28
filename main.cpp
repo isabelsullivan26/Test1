@@ -100,14 +100,14 @@ void getTheLine(const string& line){
 }
 
     void displayRegisters() {
-    cout << "R0:0x" << setw(8) << setfill('0') << uppercase << hex << reg[0] << "  ";
-    cout << "R1:0x" << setw(8) << setfill('0') << uppercase << hex << reg[1] << "  ";
-    cout << "R2:0x" << setw(8) << setfill('0') << uppercase << hex << reg[2] << "  ";
-    cout << "R3:0x" << setw(8) << setfill('0') << uppercase << hex << reg[3] << "  " << endl;
-    cout << "R4:0x" << setw(8) << setfill('0') << uppercase << hex << reg[4] << "  ";
-    cout << "R5:0x" << setw(8) << setfill('0') << uppercase << hex << reg[5] << "  ";
-    cout << "R6:0x" << setw(8) << setfill('0') << uppercase << hex << reg[6] << "  ";
-    cout << "R7:0x" << setw(8) << setfill('0') << uppercase << hex << reg[7] << endl;
+    cout << "R0:0x"  << uppercase << hex << reg[0] << "  ";
+    cout << "R1:0x" << uppercase << hex << reg[1] << "  ";
+    cout << "R2:0x"  << uppercase << hex << reg[2] << "  ";
+    cout << "R3:0x"  << uppercase << hex << reg[3] << "  " << endl;
+    cout << "R4:0x"  << uppercase << hex << reg[4] << "  ";
+    cout << "R5:0x"  << uppercase << hex << reg[5] << "  ";
+    cout << "R6:0x"  << uppercase << hex << reg[6] << "  ";
+    cout << "R7:0x" << uppercase << hex << reg[7] << endl;
     cout << "N = " << (int)N << " Z = " << (int)Z << " C = " << (int)C << " V = " << (int)V << endl;
 }
 
